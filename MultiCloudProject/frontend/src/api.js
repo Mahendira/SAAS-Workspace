@@ -1,17 +1,12 @@
-
-import axios from "axios";
-
-const api = axios.create({
-    baseURL: "http://localhost:8080",
-});
-
-export const setAuthToken = (token) => {
-    if (token) {
-        api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-    } else {
-        delete api.defaults.headers.common["Authorization"];
+export const callApi = async (endpoint) => {
+  try {
+    const response = await fetch(endpoint);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
+    return await response.text();
+  } catch (error) {
+    console.error("API call failed:", error);
+    return "Error connecting to the server.";
+  }
 };
-
-export default api;
-        
