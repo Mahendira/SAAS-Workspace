@@ -12,11 +12,13 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/auth/login/success").permitAll() // Allow access without authentication
+//                        .requestMatchers("/auth/login/success").permitAll() // Allow access without authentication
+                        .requestMatchers("/").permitAll() // Allow access without authentication
                         .anyRequest().authenticated()
                 )
                 .oauth2Login(oauth2 -> oauth2
-                        .defaultSuccessUrl("/auth/login/success", true) // Redirect after login
+                        //.defaultSuccessUrl("/auth/login/success", true) // Redirect after login
+                        .defaultSuccessUrl("/", true) // Redirect after login
                 );
         return http.build();
     }

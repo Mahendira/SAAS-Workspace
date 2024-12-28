@@ -14,4 +14,10 @@ To build, locally,
    copy "\.\frontend\build\*" ".\backend\src\main\resources\static\"
 4. then run mvn spring-boot:run
 
-Only users who has google account can access it. At the same, we dont need to maintian any passwords and its enabled token based authentication. 
+Only users who has google account can access it. At the same, we dont need to maintain any passwords and its enabled token based authentication.
+
+Additional install before npm build run command:
+npm install react-scripts --save
+
+npm install react-google-login ==> gives error
+npm install react-google-login --legacy-peer-deps
